@@ -13,6 +13,7 @@ class Location:
     def to_dict(self):
         return {"title": self.title,
                 "locations":[location.__dict__ for location in self.locations],
+                "previous_location": self.previous_location,
                 "loot": self.loot.__dict__ 
                }
     

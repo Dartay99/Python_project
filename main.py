@@ -4,6 +4,13 @@
 
 #from items.storage import Storage
 
+from utils.game_exceptions import ExitGame
+from utils.location_movement import location_movement, read_location_from_json
+
+def runGame(map):
+    current=map
+    while True:
+        current=location_movement(map,current)
 
 #player=Player(first_name="Player", hp=100, inventory=Storage([]), attack_point=10)
 
@@ -24,20 +31,12 @@
 #else: 
 #    print("Wasted!")
 
-
-from utils.location_movement import location_movement, read_location_from_json, show_current_location
-from utils.map_maker import get_location_from_console, map_maker, search_location_in_dict
-
 map=read_location_from_json()
-current=map
-current=location_movement(map)
-current=location_movement(current)
-show_current_location(current)
 
-#from utils.map_maker import map_maker
-
-
-#map_maker()
+try:
+    runGame(map)
+except ExitGame:
+    print("Goodbye!")
 
 
 
